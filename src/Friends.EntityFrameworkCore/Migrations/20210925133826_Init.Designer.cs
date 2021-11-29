@@ -4,14 +4,16 @@ using Friends.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Friends.Migrations
 {
     [DbContext(typeof(FriendsDbContext))]
-    partial class FriendsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210925133826_Init")]
+    partial class Init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1555,7 +1557,7 @@ namespace Friends.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PeriodicityType")
+                    b.Property<int>("Periodicity")
                         .HasColumnType("int");
 
                     b.Property<Guid>("RoomId")
@@ -1599,8 +1601,8 @@ namespace Friends.Migrations
                     b.Property<long>("UserId")
                         .HasColumnType("bigint");
 
-                    b.Property<int?>("AttendanceType")
-                        .HasColumnType("int");
+                    b.Property<bool>("WillAttend")
+                        .HasColumnType("bit");
 
                     b.HasKey("EventId", "UserId");
 

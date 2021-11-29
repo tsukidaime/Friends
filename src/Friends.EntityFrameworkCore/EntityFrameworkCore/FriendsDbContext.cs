@@ -22,6 +22,7 @@ namespace Friends.EntityFrameworkCore
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Room>()
                 .HasMany<Event>(x => x.Events)
                 .WithOne(x => x.Room)
@@ -31,6 +32,10 @@ namespace Friends.EntityFrameworkCore
                 .HasMany<UserRoom>(x => x.UserRooms)
                 .WithOne(x => x.User)
                 .HasForeignKey(x=>x.UserId);
+            modelBuilder.Entity<UserEvent>()
+                .HasKey(x => new { x.EventId, x.UserId });
+            modelBuilder.Entity<UserRoom>()
+                .HasKey(x => new { x.RoomId, x.UserId });
             modelBuilder.Entity<Room>()
                 .HasMany<UserRoom>(x => x.UserRooms)
                 .WithOne(x => x.Room)

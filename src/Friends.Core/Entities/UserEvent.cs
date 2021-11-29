@@ -12,14 +12,17 @@ namespace Friends.Entities
     {
         public long UserId { get; set; }
         public Guid EventId { get; set; }
-        public bool WillAttend { get; set; }
+        public AttendanceType? AttendanceType { get; set; }
         public User User { get; set; }
         public Event Event { get; set; }
         protected override IEnumerable<object> GetAtomicValues()
         {
             yield return UserId;
             yield return EventId;
-            yield return WillAttend;
         }
+    }
+
+    public enum AttendanceType { 
+        WillAttend, WillNotAttend, Attended, NotAttended
     }
 }

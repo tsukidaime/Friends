@@ -38,7 +38,7 @@ namespace Friends.Configuration
 
             if (addUserSecrets)
             {
-                builder.AddUserSecrets(typeof(AppConfigurations).GetAssembly());
+                builder.AddUserSecrets(typeof(AppConfigurations).GetAssembly(), true);
             }
 
             return builder.Build();

@@ -17,28 +17,26 @@ namespace Friends.Entities
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public string Description { get; set; }
-        public Periodicity Periodicity { get; set; }
         public EventType EventType { get; set; }
         public DateTime CreationTime { get; set; }
         public string Location { get; set; }
         public Guid RoomId { get; set; }
         public Room Room { get; set; }
         public List<UserEvent> UserEvents { get; set; }
-
+        public PeriodicityType PeriodicityType { get; set; }
         public Event()
         {
             CreationTime = Clock.Now;
         }
 
     }
+    public enum PeriodicityType
+    {
+        EveryDay, BiWeekly, OnceAWeek, OnceAMonth
+    }
 
     public enum EventType
     {
-
-    }
-
-    public enum Periodicity
-    {
-
+        RoomEvent, Personal
     }
 }
